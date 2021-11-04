@@ -4,7 +4,7 @@ with pkgs;
 
 rustPlatform.buildRustPackage rec {
   pname = "starship";
-  version = "0.58.0";
+  version = "0.58.0-sciencentistguy";
 
   src = fetchFromGitHub {
     owner = "sciencentistguy";
@@ -25,7 +25,7 @@ rustPlatform.buildRustPackage rec {
     done
   '';
 
-  cargoSha256 = "sha256-5YOF0nXn4rdp3uxatzdvaqdAbLlHK6nq5H4+ZX/7joM=";
+  cargoSha256 = "sha256-dCR9kSQsrZzK2um0yFJH1D2Fgj6v1nQpdwZq5ECdQL0=";
 
   preCheck = ''
     HOME=$TMPDIR

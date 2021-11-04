@@ -6,7 +6,7 @@ with pkgs; {
   overlays = import ./overlays; # nixpkgs overlays
 
   gimp = callPackage ./pkgs/gimp-unstable { };
-  starship = callPackage ./pkgs/starship-fork { };
+  starship = callPackage ./pkgs/starship { };
   speedtest-exporter = callPackage ./pkgs/speedtest-exporter { };
   run-one = callPackage ./pkgs/run-one { };
 }
