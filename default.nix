@@ -1,12 +1,12 @@
 { pkgs ? import <nixpkgs> { } }:
 
 with pkgs; {
-  lib = import ./lib { inherit pkgs; };
+  lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-
-  speedtest-exporter = callPackage ./speedtest-exporter { };
-  gimp-299 = callPackage ./gimp-299 { };
-
+  gimp = callPackage ./pkgs/gimp-unstable { };
+  starship = callPackage ./pkgs/starship-fork { };
+  speedtest-exporter = callPackage ./pkgs/speedtest-exporter { };
 }
+

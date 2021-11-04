@@ -1,4 +1,6 @@
-with import <nixpkgs> {};
+{ stdenv, fetchFromGitHub, pkgs ? import <nixpkgs> { } }:
+
+with pkgs;
 
 let
   python = python2.withPackages (pp: [ pp.pygtk ]);

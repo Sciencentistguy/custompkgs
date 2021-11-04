@@ -1,4 +1,6 @@
-with import <nixpkgs> {};
+{pkgs, rustPlatform, fetchFromGitHub}:
+
+with pkgs;
 
 rustPlatform.buildRustPackage rec {
   pname = "starship";
@@ -23,7 +25,7 @@ rustPlatform.buildRustPackage rec {
     done
   '';
 
-  cargoSha256 = "sha256-4gBXHf2OEDeOAnx6PbptKTcULTKuV2By2GHKdyIiNxk=";
+  cargoSha256 = "sha256-5YOF0nXn4rdp3uxatzdvaqdAbLlHK6nq5H4+ZX/7joM=";
 
   preCheck = ''
     HOME=$TMPDIR
