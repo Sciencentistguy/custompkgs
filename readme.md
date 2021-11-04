@@ -9,6 +9,7 @@ If something doesn't, file an issue, I'll try and get round to fixing it.
 - gimp-unstable
 - [Sciencentistguy/starship](https://github.com/Sciencentistguy/starship)
 - [nlamirault/speedtest_exporter](https://github.com/nlamirault/speedtest_exporter)
+- [run-one](https://launchpad.net/ubuntu/+source/run-one/1.17-0ubuntu1)
 
 ---
 

@@ -8,5 +8,6 @@ with pkgs; {
   gimp = callPackage ./pkgs/gimp-unstable { };
   starship = callPackage ./pkgs/starship-fork { };
   speedtest-exporter = callPackage ./pkgs/speedtest-exporter { };
+  run-one = callPackage ./pkgs/run-one { };
 }
 
