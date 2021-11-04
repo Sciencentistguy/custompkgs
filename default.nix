@@ -9,5 +9,6 @@ with pkgs; {
   starship = callPackage ./pkgs/starship { };
   speedtest-exporter = callPackage ./pkgs/speedtest-exporter { };
   run-one = callPackage ./pkgs/run-one { };
+  shark-radar = callPackage ./pkgs/shark-radar { };
 }
 
