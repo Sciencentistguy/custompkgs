@@ -11,11 +11,7 @@ with pkgs; stdenv.mkDerivation rec {
     sha256 = "NoD5RHezrKiYO5AMYfxdciu+Q6vpqhwdGv/DLooFPFw=";
   };
 
-  dontBuild = true;
-
-  installPhase = ''
-    for i in $(find ./include -type f); do
-      install -Dm644 $i ${placeholder "out"}/$i
-    done
-  '';
+  nativeBuildInputs = [
+    cmake
+  ];
 }
