@@ -11,4 +11,5 @@ with pkgs; {
   run-one = callPackage ./pkgs/run-one { };
   shark-radar = callPackage ./pkgs/shark-radar { };
   ctre = callPackage ./pkgs/ctre { };
+  robin-hood-hashing = callPackage ./pkgs/robin-hood-hashing { };
 }
