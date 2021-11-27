@@ -4,7 +4,8 @@ with pkgs;
 
 let
   python = python2.withPackages (pp: [ pp.pygtk ]);
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   pname = "gimp";
   version = "2.99.8";
 
@@ -26,8 +27,8 @@ in stdenv.mkDerivation rec {
     ## D-Bus configuration is not available in the build sandbox
     ## so we need to pick up the one from the package.
     #(substituteAll {
-      #src = ./tests-dbus-conf.patch;
-      #session_conf = "${dbus.daemon}/share/dbus-1/session.conf";
+    #src = ./tests-dbus-conf.patch;
+    #session_conf = "${dbus.daemon}/share/dbus-1/session.conf";
     #})
 
 

@@ -1,9 +1,14 @@
-{ pkgs ? import <nixpkgs> { } }:
-with pkgs;
-pkgs.stdenv.mkDerivation {
+{ pkgs ? import <nixpkgs> { }
+, stdenv ? pkgs.stdenv
+}:
+
+with pkgs; stdenv.mkDerivation {
   pname = "run-one";
   version = "1.17";
   src = fetchTarball "https://launchpad.net/ubuntu/+archive/primary/+sourcefiles/run-one/1.17-0ubuntu1/run-one_1.17.orig.tar.gz";
+
+  dontConfigure = true;
+  dontBuild = true;
 
   installPhase = ''
     install -Dm755 keep-one-running ${placeholder "out"}/bin/keep-one-running

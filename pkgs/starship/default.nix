@@ -1,8 +1,9 @@
-{pkgs, rustPlatform, fetchFromGitHub}:
+{ pkgs
+, stdenv
+, rustPlatform
+}:
 
-with pkgs;
-
-rustPlatform.buildRustPackage rec {
+with pkgs; rustPlatform.buildRustPackage rec {
   pname = "starship";
   version = "0.58.0-sciencentistguy";
 
@@ -31,7 +32,7 @@ rustPlatform.buildRustPackage rec {
     HOME=$TMPDIR
   '';
 
-  meta = with lib; {
+  meta = with pkgs.lib; {
     description = "A minimal, blazing fast, and extremely customizable prompt for any shell";
     homepage = "https://starship.rs";
     license = licenses.isc;

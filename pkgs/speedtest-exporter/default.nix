@@ -1,9 +1,6 @@
-#with import <nixpkgs> {};
+{ buildGoPackage, fetchFromGitHub }:
 
-
-{buildGoPackage, fetchFromGitHub}:
-
-buildGoPackage rec { 
+buildGoPackage rec {
   pname = "speedtest-exporter";
   version = "0.3.2";
   src = fetchFromGitHub {

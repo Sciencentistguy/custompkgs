@@ -1,6 +1,9 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }
+, stdenv ? pkgs.stdenv
+, callPackage ? pkgs.callPackage
+}:
 
-with pkgs; {
+rec {
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
