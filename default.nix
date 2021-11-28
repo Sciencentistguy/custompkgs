@@ -15,5 +15,4 @@ rec {
   shark-radar = callPackage ./pkgs/shark-radar { };
   ctre = callPackage ./pkgs/ctre { };
   robin-hood-hashing = callPackage ./pkgs/robin-hood-hashing { };
-  ffmpeg-full-nvenc = callPackage ./pkgs/ffmpeg-full-nvenc { };
 }
