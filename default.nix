@@ -15,4 +15,5 @@ rec {
   shark-radar = callPackage ./pkgs/shark-radar { };
   ctre = callPackage ./pkgs/ctre { };
   robin-hood-hashing = callPackage ./pkgs/robin-hood-hashing { };
+  beets-file-info = callPackage ./pkgs/beets-file-info { };
 }
