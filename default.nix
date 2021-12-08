@@ -16,4 +16,5 @@ rec {
   ctre = callPackage ./pkgs/ctre { };
   robin-hood-hashing = callPackage ./pkgs/robin-hood-hashing { };
   beets-file-info = callPackage ./pkgs/beets-file-info { };
+  sherlock = callPackage ./pkgs/sherlock { };
 }

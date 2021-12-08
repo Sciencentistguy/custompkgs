@@ -14,6 +14,7 @@ If something doesn't, file an issue, I'll try and get round to fixing it.
 - [CTRE](https://github.com/hanickadot/compile-time-regular-expressions)
 - [robin-hood-hashing](https://github.com/martinus/robin-hood-hashing)
 - [beets-file-info](https://github.com/Sciencentistguy/beets-file-info)
+- [sherlock](https://github.com/sherlock-project/sherlock)
 
 ---
 
