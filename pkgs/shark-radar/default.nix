@@ -1,7 +1,6 @@
 { pkgs ? import <nixpkgs> { }
 , stdenv ? pkgs.stdenv
 , python3Packages ? pkgs.python3Packages
-,
 }:
 
 with pkgs;
@@ -25,7 +24,10 @@ stdenv.mkDerivation rec {
   '';
 
   patches = [
-    ./interpreter.patch
+    (substituteAll {
+      src = ./interpreter.patch;
+      python = "${python3.interpreter}";
+    })
   ];
 
   postPatch = ''
