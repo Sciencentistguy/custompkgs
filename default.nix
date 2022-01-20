@@ -2,7 +2,12 @@
 , stdenv ? pkgs.stdenv
 , callPackage ? pkgs.callPackage
 }:
-
+let
+  naersk_tarball = fetchTarball {
+    url = "https://github.com/nix-community/naersk/archive/master.tar.gz";
+  };
+  nearsk = pkgs.callPackage naersk_tarball { };
+in
 rec {
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules

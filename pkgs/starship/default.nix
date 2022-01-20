@@ -1,23 +1,30 @@
-{ pkgs
-, stdenv
-, rustPlatform
+{ pkgs ? import <nixpkgs> { }
+, stdenv ? pkgs.stdenv
+, rustPlatform ? pkgs.rustPlatform
+, nearsk ? pkgs.callPackage
+    (fetchTarball {
+      url = "https://github.com/nix-community/naersk/archive/master.tar.gz";
+    })
+    { }
 }:
 
-with pkgs; rustPlatform.buildRustPackage rec {
+with pkgs; nearsk.buildPackage rec {
   pname = "starship";
-  version = "0.58.0-sciencentistguy";
+  version = "1.1.1-sciencentistguy";
+
+  singleStep = true;
 
   src = fetchFromGitHub {
     owner = "sciencentistguy";
     repo = pname;
-    rev = "35f1e442e6691415df6e5c0ec4c86781f491a220";
-    sha256 = "sha256-s84fIpCyTF7FrJZGATjIJHt/+aknlhlz1V9s+c4f+Ig=";
+    rev = "80db1713bdfbee3eb63c4a0c2ed2188ac846a664";
+    sha256 = "sha256-qFbbnjdA56LYoWFWyjxHkydqLmRHo64S7oOgMcNiNOs";
   };
 
   nativeBuildInputs = [ installShellFiles ] ++ lib.optionals stdenv.isLinux [ pkg-config ];
 
   buildInputs = lib.optionals stdenv.isLinux [ openssl ]
-    ++ lib.optionals stdenv.isDarwin [ libiconv Security ];
+    ++ lib.optionals stdenv.isDarwin [ libiconv ];
 
   postInstall = ''
     for shell in bash fish zsh; do
@@ -25,8 +32,6 @@ with pkgs; rustPlatform.buildRustPackage rec {
       installShellCompletion starship.$shell
     done
   '';
-
-  cargoSha256 = "sha256-dCR9kSQsrZzK2um0yFJH1D2Fgj6v1nQpdwZq5ECdQL0=";
 
   preCheck = ''
     HOME=$TMPDIR
@@ -36,6 +41,5 @@ with pkgs; rustPlatform.buildRustPackage rec {
     description = "A minimal, blazing fast, and extremely customizable prompt for any shell";
     homepage = "https://starship.rs";
     license = licenses.isc;
-    maintainers = with maintainers; [ bbigras davidtwco Br1ght0ne Frostman marsam ];
   };
 }
