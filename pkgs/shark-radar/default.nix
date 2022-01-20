@@ -19,19 +19,13 @@ stdenv.mkDerivation rec {
     dos2unix
   ];
 
-  prePatch = ''
-    dos2unix list.py
-  '';
-
   patches = [
-    (substituteAll {
-      src = ./interpreter.patch;
-      python = "${python3.interpreter}";
-    })
+    ./interpreter.patch
   ];
 
   postPatch = ''
-    substituteInPlace list.py --replace "stores.json" "${placeholder "out"}/usr/share/shark-radar/stores.json"
+    dos2unix list.py
+    substituteInPlace list.py --replace "stores.json" "${placeholder "out"}/share/shark-radar/stores.json"
   '';
 
   dontConfigure = true;
@@ -39,7 +33,7 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     install -Dm755 list.py ${placeholder "out"}/bin/shark-radar
-    install -Dm644 stores.json ${placeholder "out"}/usr/share/shark-radar/stores.json
+    install -Dm644 stores.json ${placeholder "out"}/share/shark-radar/stores.json
   '';
 
   propogatedBuildInputs = [
