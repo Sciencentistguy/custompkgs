@@ -14,7 +14,7 @@ rec {
   overlays = import ./overlays; # nixpkgs overlays
 
   gimp = callPackage ./pkgs/gimp-unstable { };
-  starship = callPackage ./pkgs/starship { };
+  starship = callPackage ./pkgs/starship { inherit nearsk; };
   speedtest-exporter = callPackage ./pkgs/speedtest-exporter { };
   run-one = callPackage ./pkgs/run-one { };
   shark-radar = callPackage ./pkgs/shark-radar { };

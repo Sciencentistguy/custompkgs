@@ -1,24 +1,19 @@
 { pkgs ? import <nixpkgs> { }
-, stdenv ? pkgs.stdenv
-, rustPlatform ? pkgs.rustPlatform
-, nearsk ? pkgs.callPackage
-    (fetchTarball {
-      url = "https://github.com/nix-community/naersk/archive/master.tar.gz";
-    })
-    { }
+, stdenv
+, nearsk
 }:
 
 with pkgs; nearsk.buildPackage rec {
   pname = "starship";
-  version = "1.1.1-sciencentistguy";
+  version = "1.2.1-sciencentistguy";
 
   singleStep = true;
 
   src = fetchFromGitHub {
     owner = "sciencentistguy";
     repo = pname;
-    rev = "80db1713bdfbee3eb63c4a0c2ed2188ac846a664";
-    sha256 = "sha256-qFbbnjdA56LYoWFWyjxHkydqLmRHo64S7oOgMcNiNOs";
+    rev = "6f1f5bd0b82ebc17285cf46f99130891dd10c727";
+    sha256 = "sha256-he2MowiMny+BduXZ+FmHxxn+IM+rx6thkKXVg3Ni8vs=";
   };
 
   nativeBuildInputs = [ installShellFiles ] ++ lib.optionals stdenv.isLinux [ pkg-config ];
