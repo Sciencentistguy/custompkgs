@@ -1,9 +1,9 @@
 { pkgs ? import <nixpkgs> { }
 , stdenv
-, nearsk
+, naersk
 }:
 
-with pkgs; nearsk.buildPackage rec {
+with pkgs; naersk.buildPackage rec {
   pname = "starship";
   version = "1.2.1-sciencentistguy";
 
