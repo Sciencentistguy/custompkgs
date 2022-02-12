@@ -1,17 +1,18 @@
-{ lib, symlinkJoin, gimp, makeWrapper, gimpPlugins, gnome, plugins ? null}:
+{ lib, symlinkJoin, gimp, makeWrapper, gimpPlugins, gnome, plugins ? null }:
 
 let
-allPlugins = lib.filter (pkg: lib.isDerivation pkg && !pkg.meta.broken or false) (lib.attrValues gimpPlugins);
-selectedPlugins = lib.filter (pkg: pkg != gimpPlugins.gimp) (if plugins == null then allPlugins else plugins);
-extraArgs =
-  map (x: x.wrapArgs or "") selectedPlugins
-  ++ lib.optionals (gimp.majorVersion == "2.0") [
-    ''--prefix GTK_PATH : "${gnome.gnome-themes-extra}/lib/gtk-2.0"''
-  ];
-branch = gimp.majorVersion;
-majorVersion = if gimp.majorVersion == "2.0" then "2" else "3";
+  allPlugins = lib.filter (pkg: lib.isDerivation pkg && !pkg.meta.broken or false) (lib.attrValues gimpPlugins);
+  selectedPlugins = lib.filter (pkg: pkg != gimpPlugins.gimp) (if plugins == null then allPlugins else plugins);
+  extraArgs =
+    map (x: x.wrapArgs or "") selectedPlugins
+    ++ lib.optionals (gimp.majorVersion == "2.0") [
+      ''--prefix GTK_PATH : "${gnome.gnome-themes-extra}/lib/gtk-2.0"''
+    ];
+  branch = gimp.majorVersion;
+  majorVersion = if gimp.majorVersion == "2.0" then "2" else "3";
 
-in symlinkJoin {
+in
+symlinkJoin {
   name = "gimp-with-plugins-${gimp.version}";
 
   paths = [ gimp ] ++ selectedPlugins;

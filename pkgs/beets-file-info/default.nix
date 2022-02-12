@@ -1,4 +1,4 @@
-{lib, fetchFromGitHub, beets, python3Packages}:
+{ lib, fetchFromGitHub, beets, python3Packages }:
 
 python3Packages.buildPythonPackage {
   pname = "beets-file-info";
@@ -9,5 +9,5 @@ python3Packages.buildPythonPackage {
     rev = "1.0";
     sha256 = "sha256-rLrXJ/iMaa+zg7UENffZtSsz74SQ6X/RlIWlR8QPt+M=";
   };
-  nativeBuildInputs = [beets];
+  nativeBuildInputs = [ beets ];
 }
