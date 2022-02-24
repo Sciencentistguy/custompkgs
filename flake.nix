@@ -7,7 +7,7 @@
   outputs = { self, nixpkgs, flake-utils, ... }:
     {
       overlay = final: pkgs: {
-        gimp = pkgs.callPackage ./pkgs/gimp-unstable { };
+        gimp-unstable = pkgs.callPackage ./pkgs/gimp-unstable { };
         starship = pkgs.callPackage ./pkgs/starship { };
         speedtest-exporter = pkgs.callPackage ./pkgs/speedtest-exporter { };
         run-one = pkgs.callPackage ./pkgs/run-one { };
