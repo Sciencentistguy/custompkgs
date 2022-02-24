@@ -1,20 +1,26 @@
 { pkgs ? import <nixpkgs> { }
 , stdenv
-, naersk
 }:
-
-with pkgs; naersk.buildPackage rec {
+with pkgs;
+let
+  rev = "78fda3012c68ec807f7e913548061a9b81fd2853";
+in
+rustPlatform.buildRustPackage rec {
   pname = "starship";
-  version = "1.2.1-sciencentistguy";
-
-  singleStep = true;
+  version = "1.3.0-sciencentistguy";
 
   src = fetchFromGitHub {
     owner = "sciencentistguy";
     repo = pname;
-    rev = "6f1f5bd0b82ebc17285cf46f99130891dd10c727";
-    sha256 = "sha256-he2MowiMny+BduXZ+FmHxxn+IM+rx6thkKXVg3Ni8vs=";
+    inherit rev;
+    sha256 = "sha256-obZcwpn3zKBR4ND5Q3GWmOrfbOopr3pQQVRELr7o2xQ=";
   };
+
+  cargoSha256 = "sha256-lkkhUlkzp3nDPyyydU33/JjOgnRXeUWwoMQ/sGW4lvQ=";
+
+  # cargoLock = {
+    # lockFile = builtins.fetchurl "https://raw.githubusercontent.com/Sciencentistguy/starship/${rev}/Cargo.lock";
+  # };
 
   nativeBuildInputs = [ installShellFiles ] ++ lib.optionals stdenv.isLinux [ pkg-config ];
 
@@ -32,9 +38,9 @@ with pkgs; naersk.buildPackage rec {
     HOME=$TMPDIR
   '';
 
-  meta = with pkgs.lib; {
-    description = "A minimal, blazing fast, and extremely customizable prompt for any shell";
-    homepage = "https://starship.rs";
-    license = licenses.isc;
-  };
+  # meta = with pkgs.lib; {
+  # description = "A minimal, blazing fast, and extremely customizable prompt for any shell";
+  # homepage = "https://starship.rs";
+  # license = licenses.isc;
+  # };
 }

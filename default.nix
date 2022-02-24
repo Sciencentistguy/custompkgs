@@ -1,11 +1,6 @@
 { pkgs ? import <nixpkgs> { }
 , stdenv ? pkgs.stdenv
 , callPackage ? pkgs.callPackage
-, naersk ? pkgs.callPackage
-    (fetchTarball {
-      url = "https://github.com/nix-community/naersk/archive/master.tar.gz";
-    })
-    { }
 }:
 rec {
   lib = import ./lib { inherit pkgs; }; # functions
@@ -13,7 +8,7 @@ rec {
   overlays = import ./overlays; # nixpkgs overlays
 
   gimp = callPackage ./pkgs/gimp-unstable { };
-  starship = callPackage ./pkgs/starship { inherit naersk; };
+  starship = callPackage ./pkgs/starship { };
   speedtest-exporter = callPackage ./pkgs/speedtest-exporter { };
   run-one = callPackage ./pkgs/run-one { };
   shark-radar = callPackage ./pkgs/shark-radar { };

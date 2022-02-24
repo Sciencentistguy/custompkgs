@@ -2,14 +2,13 @@
   description = "custompkgs";
   inputs = {
     nixpkgs.url = github:NixOS/nixpkgs/nixpkgs-unstable;
-    naersk.url = github:nix-community/naersk;
     flake-utils.url = github:numtide/flake-utils;
   };
-  outputs = { self, nixpkgs, naersk, flake-utils, ... }:
+  outputs = { self, nixpkgs, flake-utils, ... }:
     {
       overlay = final: pkgs: {
         gimp = pkgs.callPackage ./pkgs/gimp-unstable { };
-        starship = pkgs.callPackage ./pkgs/starship { naersk = naersk.lib."${pkgs.stdenv.system}"; };
+        starship = pkgs.callPackage ./pkgs/starship { };
         speedtest-exporter = pkgs.callPackage ./pkgs/speedtest-exporter { };
         run-one = pkgs.callPackage ./pkgs/run-one { };
         shark-radar = pkgs.callPackage ./pkgs/shark-radar { };
@@ -19,10 +18,4 @@
         sherlock = pkgs.callPackage ./pkgs/sherlock { };
       };
     };
-  # flake-utils.lib.eachDefaultSystem (system:
-  # let pkgs = nixpkgs.legacyPackages.${system}; in
-  # with pkgs; rec {
-  # }
-  # );
-
 }
