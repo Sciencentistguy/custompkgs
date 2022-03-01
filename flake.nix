@@ -8,7 +8,6 @@
     {
       overlay = final: pkgs: {
         gimp-unstable = pkgs.callPackage ./pkgs/gimp-unstable { };
-        starship = pkgs.callPackage ./pkgs/starship { };
         speedtest-exporter = pkgs.callPackage ./pkgs/speedtest-exporter { };
         run-one = pkgs.callPackage ./pkgs/run-one { };
         shark-radar = pkgs.callPackage ./pkgs/shark-radar { };

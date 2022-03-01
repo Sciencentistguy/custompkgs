@@ -8,7 +8,6 @@ rec {
   overlays = import ./overlays; # nixpkgs overlays
 
   gimp-unstable = callPackage ./pkgs/gimp-unstable { };
-  starship = callPackage ./pkgs/starship { };
   speedtest-exporter = callPackage ./pkgs/speedtest-exporter { };
   run-one = callPackage ./pkgs/run-one { };
   shark-radar = callPackage ./pkgs/shark-radar { };
