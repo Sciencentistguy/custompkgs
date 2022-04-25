@@ -1,9 +1,9 @@
-{ pkgs ? import <nixpkgs> { }
-, stdenv ? pkgs.stdenv
-, cmake ? pkgs.cmake
-, fetchFromGitHub ? pkgs.fetchFromGitHub
+{
+  pkgs ? import <nixpkgs> {},
+  stdenv ? pkgs.stdenv,
+  cmake ? pkgs.cmake,
+  fetchFromGitHub ? pkgs.fetchFromGitHub,
 }:
-
 stdenv.mkDerivation rec {
   pname = "ctre";
   version = "3.4.1";

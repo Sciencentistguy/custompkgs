@@ -1,5 +1,7 @@
-{ buildGoPackage, fetchFromGitHub }:
-
+{
+  buildGoPackage,
+  fetchFromGitHub,
+}:
 buildGoPackage rec {
   pname = "speedtest-exporter";
   version = "0.3.2";

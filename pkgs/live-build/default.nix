@@ -1,10 +1,10 @@
-{ pkgs ? import <nixpkgs> { }
-, stdenv ? pkgs.stdenv
-, syslinux ? pkgs.syslinux
-, fetchFromGitLab ? pkgs.fetchFromGitLab
+{
+  pkgs ? import <nixpkgs> {},
+  stdenv ? pkgs.stdenv,
+  syslinux ? pkgs.syslinux,
+  fetchFromGitLab ? pkgs.fetchFromGitLab,
 }:
 stdenv.mkDerivation rec {
-
   pname = "live-build";
   version = "1-20210902";
 
@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
     syslinux
   ];
 
-  postPatch = '' 
+  postPatch = ''
     for file in $(grep -lirE "/usr" */); do
       echo $file
       substituteInPlace $file --replace "/usr" $out
@@ -45,5 +45,4 @@ stdenv.mkDerivation rec {
   '';
 
   # TODO: patch scripts somehow so they, like, work
-
 }

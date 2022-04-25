@@ -1,4 +1,2 @@
-{ pkgs }:
-
-with pkgs.lib;
-{ }
+{pkgs}:
+with pkgs.lib; {}
